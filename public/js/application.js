@@ -1,7 +1,27 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $("button#song-like").on("click", function() {
+    var like = 1;
+    var songId = $(this).parent().parent("div").attr("id");
+    var url = "/songs/" + songId + "/likes"
+    $.ajax({
+      url: url,
+      method: "post",
+      data: {"type": "Song", "like": like}
+    }).done(function(response){
+       $("div#" + songId).find(".likes span").text(response['likes'] + "like(s)");
+    })
+  });
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $("button#user-like").on("click", function() {
+    var like = 1;
+    var userId = $(this).parent().parent("div").attr("id");
+    var url = "/users/" + userId + "/likes"
+    $.ajax({
+      url: url,
+      method: "post",
+      data: {"type": "User", "like": like}
+    }).done(function(response){
+       $("div#" + userId).find(".likes span").text(response['likes'] + " like(s)");
+    })
+  });
 });

@@ -1,5 +1,5 @@
-<div class="container">
-  <h2><%=@song.title%></h2>
+<div class="container" id="<%=@song.id%>">
+  <h2><%=@song.title.capitalize%></h2>
   <h4><%=@song.album%></h4>
   <p><%=@song.artist%></p>
 
@@ -7,7 +7,18 @@
   <!-- fix -->
     <p><%=@song.lyrics%></p>
   </div>
+
+  <p>
+    <a href="http://lyrics.musixmatch.com/<%=@song.artist%>-lyrics_<%=@song.artist_id%>/<%=redirect_format(@song)%>_<%=@song.track_id%>">Check out the full lyrics</a>
+  </p>
+
+  <div class="likes">
+    <%if logged_in?%>
+    <button id="song-like" class="btn waves-effect waves-light" type="submit" name="action">Like
+     <i class="small material-icons right">thumb_up</i>
+    </button>
+    <%end%>
+    <span> <%=@song.favorites%> like(s)</span>
 </div>
 
-
-<!-- http://lyrics.musixmatch.com/Gotye-lyrics_124402/Video-Mirrors-album_15723650 album -->
+</div>

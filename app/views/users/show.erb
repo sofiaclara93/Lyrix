@@ -1,15 +1,23 @@
-<div class="container">
+<div class="container" id="<%=@user.id%>">
   <h2><%=@user.username.capitalize%>'s Favorite Songs</h2>
 
-  <%if @user.songs.empty?%>
+  <%if liked_songs(@user).empty?%>
     <p><%=current_user_page(@user)%> Have any Favorite Songs at the Moment!</p>
     <img src="https://media.giphy.com/media/DFOiQVLLFNHAQ/giphy.gif">
   <%else%>
     <ul>
-      <%@user.songs.each do |song|%>
-      <li><a href="/songs/<%=song.id%>"></a><%=song.title%></li>
-      <p>by <%=song.artist%></p>
+      <%liked_songs(@user).each do |like|%>
+        <%=find_song(like)%>
       <%end%>
     </ul>
   <%end%>
+
+  <div class="likes">
+    <%if logged_in? && current_user.id != @user.id%>
+    <button id="user-like" class="btn waves-effect waves-light" type="submit" name="action">Like
+     <i class="small material-icons right">thumb_up</i>
+    </button>
+    <%end%>
+    <span> <%=@user.favorites%> like(s)</span>
+  </div>
 </div>

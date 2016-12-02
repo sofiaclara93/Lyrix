@@ -21,3 +21,22 @@ end
 def lyrics(response)
   response["message"]["body"]["lyrics"]["lyrics_body"]
 end
+
+def track_artist(response)
+  response["message"]["body"]["track_list"][0]["track"]["artist_id"]
+end
+
+def redirect_format(song)
+  song = song.title
+  song = song.split(" ")
+  song = song.join("-")
+end
+
+
+def liked_songs(user)
+  likes = Like.where(liker_id: user.id, likeable_type: "Song")
+end
+
+def find_song(like)
+  Song.find_by(id: like.likeable_id)
+end
