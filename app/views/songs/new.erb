@@ -1,0 +1,9 @@
+<div class="container">
+  <%= erb :"/partials/_errors", layout:false %>
+  <h2>Enter a Track Title</h2>
+  <form action="/songs" method="post">
+    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="artist" placeholder="Artist">
+    <input type="submit" value="Search">
+  </form>
+</div>

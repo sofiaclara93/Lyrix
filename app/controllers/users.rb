@@ -14,11 +14,6 @@ post '/users' do
 end
 
 get '/users/:user_id' do
-  # binding.pry
   @user = User.find_by(id: params[:user_id])
-  if logged_in? && current_user.id == @user.id
-    erb :'/users/show'
-  else
-    status 404
-  end
+  erb :'/users/show'
 end
