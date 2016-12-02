@@ -1,0 +1,15 @@
+<div class="container">
+  <h2><%=@user.username.capitalize%>'s Favorite Songs</h2>
+
+  <%if @user.songs.empty?%>
+    <p><%=current_user_page(@user)%> Have any Favorite Songs at the Moment!</p>
+    <img src="https://media.giphy.com/media/DFOiQVLLFNHAQ/giphy.gif">
+  <%else%>
+    <ul>
+      <%@user.songs.each do |song|%>
+      <li><a href="/songs/<%=song.id%>"></a><%=song.title%></li>
+      <p>by <%=song.artist%></p>
+      <%end%>
+    </ul>
+  <%end%>
+</div>

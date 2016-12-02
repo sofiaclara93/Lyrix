@@ -1,1 +1,9 @@
-<%= %>
+<div class="container">
+  <h2><%=@artist.name%></h2>
+
+  <!-- <p>Check out their Discography</p> -->
+  <a href="http://lyrics.musixmatch.com/<%=@artist.name%>-lyrics_<%=@artist.artist_id%>/
+">Check out their Discography!</a>
+<br>
+  <a href="<%=@artist.twitter%>">Check out their tweets!</a>
+</div>

@@ -1,5 +1,5 @@
 class Song < ActiveRecord::Base
-  validates_presence_of :title, :artist, :album
+  validates_presence_of :title, :artist, :album, :track_id
   belongs_to :user
   has_many :likes, as: :likeable
 

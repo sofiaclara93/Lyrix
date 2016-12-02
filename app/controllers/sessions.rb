@@ -8,7 +8,7 @@ post '/sessions' do
     session[:user_id] = user.id
     redirect "/users/#{user.id}"
   else
-    @errors = user.errors.full_messages
+    @errors = ["Invalid input. Please try again"]
     erb :'/sessions/new'
   end
 end
